@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>หน้าจอจุดซักประวัติ</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="..\dist\bootstrap.min.css">
+  <!-- Optional theme -->
+  <link href="..\dist\style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+
+
+  <div class="row">
+    <div class="col-md-7" id="wait-list">
+
+    </div>
+
+    <div class="col-md-5" id="wait-called">
+
+
+    </div>
+  </div>
+
+
+
+
+  <footer class="footer">
+
+    <div class="fixed-bottom" style="background-color:black; vertical-align: bottom;width:100%;">
+      <marquee><h1 style="color:yellow;">หากคิวของท่านถูกเรียกไปแล้วให้ติดต่อเจ้าหน้าที่จุดซักประวัติได้ทันที &#9786;&#9786;&#9786;</h1>
+      </marquee>
+    </div>
+
+  </footer>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="..\dist\jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="..\dist\bootstrap.min.js"></script>
+  <script>
+    var timerloadwaitlist, timerloadwaitcalled;
+
+    function loadWaitList() {
+      //$('#wait-list').html('Loafing.....');
+      $.get('waitscreen_waitlist.php', function(data) {
+        $('#wait-list').html(data);
+        console.log("loadWaitList");
+      });
+    } //จบฟังก์ชั่น
+
+    function loadWaitCalled() {
+      //$('#wait-list').html('Loafing.....');
+      /*$.get('waitscreen_called.php', function(data) {
+        $('#wait-called').html(data);
+        console.log("loadWaitCalled");
+      });*/
+        $('#wait-called').load('waitscreen_called.php');
+
+    } //จบฟังก์ชั่น
+
+    $(document).ready(function() {
+      loadWaitList();
+      loadWaitCalled();
+      timerloadwaitlist = setInterval(loadWaitList, 10 * 1000);
+      timerloadwaitcalled = setInterval(loadWaitCalled, 5 * 1000);
+    });
+
+    $(window).on('unload',function() {
+      clearInterval(timerloadwaitlist, timerloadwaitcalled);
+    });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: skyblue;
+  color: white;
+  margin: 0px;
+  margin-right: 15px;
+  padding-top: 0px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}
+
+/*blink*/
+.blinkflash {
+  animation: blinker 1.5s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.blink-default {
+  animation-name: anim-default;
+}
+
+.blink-primary {
+  animation-name: anim-primary;
+}
+
+.blink-success {
+  animation-name: anim-success;
+}
+
+.blink-info {
+  animation-name: anim-info;
+}
+
+.blink-warning {
+  animation-name: anim-warning;
+}
+
+.blink-danger {
+  animation-name: anim-danger;
+}
+
+@keyframes anim-default {
+  to {
+    color: black;
+  }
+}
+
+@keyframes anim-primary {
+  to {
+    color: #fff;
+    background-color: #337ab7;
+  }
+}
+
+@keyframes anim-success {
+  to {
+    color: #fff;
+    background-color: #5cb85c;
+  }
+}
+
+@keyframes anim-info {
+  to {
+    color: #fff;
+    background-color: #5bc0de;
+  }
+}
+
+@keyframes anim-warning {
+  to {
+    color: #fff;
+    background-color: #f0ad4e;
+  }
+}
+
+@keyframes anim-danger {
+  to {
+    color: #fff;
+    background-color: #d9534f;
+  }
+}
+
+/*blink*/
+#custom table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 3px solid #ddd;
+
+}
+
+#custom tr {
+  font-size: 230%;
+}
+
+#custom th {
+  text-align: center;
+}
+
+#custom td {
+  padding: 0.5em;
+}
+
+#custom2 tr {
+  font-size: 400%;
+}
+
+#custom2 td {
+  padding: 0.5em;
+  text-align: center;
+}

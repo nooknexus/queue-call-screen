@@ -1,0 +1,43 @@
+<!--<html>
+<head>
+
+</head>
+
+<body onLoad="window.open('screen.html', '', 'fullscreen=yes, scrollbars=auto'); window.opener=null; window.close(); return false;">
+
+</body>
+
+</html>-->
+<html>
+<head>
+  <meta charset="utf-8" />
+<title>Fullscreen browser window with jQuery</title>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<a href="#" class="fullscreen">เปิดใช้งาน</a>
+<a href="#" class="fullscreenExit">ปิดใช้งาน</a>
+<script>
+    $("a.fullscreen").on('click', function() {
+      var docElement, request;
+
+      docElement = document.documentElement;
+      request = docElement.requestFullScreen || docElement.webkitRequestFullScreen || docElement.mozRequestFullScreen || docElement.msRequestFullScreen;
+
+      if(typeof request!="undefined" && request){
+          request.call(docElement);
+      }
+    });
+    $("a.fullscreenExit").on('click', function() {
+        var docElement, request;
+
+        docElement = document;
+        request = docElement.cancelFullScreen|| docElement.webkitCancelFullScreen || docElement.mozCancelFullScreen || docElement.msCancelFullScreen || docElement.exitFullscreen;
+        if(typeof request!="undefined" && request){
+            request.call(docElement);
+        }
+    });
+</script>
+</body>
+</html>
