@@ -1,5 +1,5 @@
 <?php
-    include("..\connect.php");
+    require("../connect.php");
 
     $sql = "SELECT
           	COUNT( vn ) as total
@@ -13,4 +13,5 @@
     $query = mysqli_query($objCon, $sql);
     $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
     echo "<b>ทั้งหมด " .$result['total']. " คน</b>";
+    mysqli_close($objCon);
  ?>

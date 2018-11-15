@@ -1,5 +1,5 @@
 <?php
-    include("..\connect.php");
+    require("../connect.php");
 
     $sql = "SELECT
           	depq,

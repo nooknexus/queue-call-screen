@@ -1,5 +1,5 @@
 <?php
-    include("../connect.php");
+    require("../connect.php");
 
     $sql = "SELECT
     o.depq depq,o.fullname fullname,o.stationno stationno,p.image image
@@ -79,3 +79,4 @@
      </div>
      <!-- END SIDEBAR USER TITLE -->
 </div>
+<?php mysqli_close($objCon); ?>

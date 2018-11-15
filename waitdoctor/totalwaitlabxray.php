@@ -1,5 +1,5 @@
 <?php
-    include("..\connect.php");
+    require("../connect.php");
 
     $sql = "SELECT count(tt.depq) total FROM (SELECT
             	q.depq,
@@ -26,5 +26,6 @@
 
     $query = mysqli_query($objCon, $sql);
     $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
-    echo "<b>รอ แล็ป/เอ็กส์เรย์ ทั้งหมด " .$result['total']. " คน</b>";
+	echo "<b>รอ แล็ป/เอ็กส์เรย์ ทั้งหมด " .$result['total']. " คน</b>";
+	mysqli_close($objCon);
  ?>

@@ -1,5 +1,5 @@
 <?php
-    include("../connect.php");
+    require("../connect.php");
 
     $sql = "SELECT DATE_FORMAT(time_visit,'%H:%i') as time_visit,
 	depq,
@@ -75,4 +75,5 @@ while ($result2=mysqli_fetch_array($query2, MYSQLI_ASSOC)) {
     </tr>
     <?php
 }
+mysqli_close($objCon);
 ?>

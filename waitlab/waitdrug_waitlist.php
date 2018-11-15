@@ -1,5 +1,5 @@
 <?php
-    include("../connect.php");
+    require("../connect.php");
 
     $sql = "SELECT
     o.depq depq,o.fullname fullname,o.stationno stationno,p.image image
@@ -64,3 +64,4 @@ while ($result2=mysqli_fetch_array($query2, MYSQLI_ASSOC)) {
 
 
 </table>
+<?php mysqli_close($objCon); ?>

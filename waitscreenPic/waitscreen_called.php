@@ -1,5 +1,5 @@
 <?php
-    include("..\connect.php");
+    require("../connect.php");
 
     $sql = "SELECT
           	depq,
@@ -42,6 +42,7 @@
         </tr>
         <?php
   }
+  mysqli_close($objCon);
   ?>
 
 </table>
