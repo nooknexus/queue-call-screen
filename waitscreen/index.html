@@ -21,8 +21,9 @@
 
 
   <div class="row">
-    <div class="col-md-7" id="wait-list">
-
+    <div class="col-md-7">
+        <div class="row" id="wait-list"></div>
+        <div class="row" id="wait-total" style="text-align:center;background-color:#800000;color:white;font-size: 30px;"></div>
     </div>
 
     <div class="col-md-5" id="wait-called">
@@ -49,6 +50,7 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <!-- Latest compiled and minified JavaScript -->
   <script src="..\dist\bootstrap.min.js"></script>
+  <script src="..\dist\socket.io.js"></script>
   <script>
     var timerloadwaitlist, timerloadwaitcalled;
 
@@ -60,6 +62,13 @@
       });
     } //จบฟังก์ชั่น
 
+    function loadTotal(){
+      $.get('total.php', function(data) {
+          $('#wait-total').html(data);
+          console.log("loadTotal");
+      });
+    }
+
     function loadWaitCalled() {
       //$('#wait-list').html('Loafing.....');
       /*$.get('waitscreen_called.php', function(data) {
@@ -67,19 +76,31 @@
         console.log("loadWaitCalled");
       });*/
         $('#wait-called').load('waitscreen_called.php');
-
+        console.log("loadWaitCalled");
     } //จบฟังก์ชั่น
 
+
+
     $(document).ready(function() {
+      /*var socket = io("http://61.19.22.99:3000");
+      socket.on("notify-wait-screen",function(data){
+        loadWaitList();
+        loadWaitCalled();
+        console.log("socketupdate");
+      });*/
       loadWaitList();
+      loadTotal();
       loadWaitCalled();
       timerloadwaitlist = setInterval(loadWaitList, 10 * 1000);
+      timerloadtotal = setInterval(loadTotal, 10 * 1000);
       timerloadwaitcalled = setInterval(loadWaitCalled, 5 * 1000);
+
     });
 
     $(window).on('unload',function() {
       clearInterval(timerloadwaitlist, timerloadwaitcalled);
     });
+
 
   </script>
 </body>

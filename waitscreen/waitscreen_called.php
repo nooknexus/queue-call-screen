@@ -13,7 +13,7 @@
           	AND CONCAT( SUBSTRING( YEAR ( CURRENT_DATE ( ) ) + 543, 3, 2 ), DATE_FORMAT( CURRENT_DATE, '%m%d' ) ) = SUBSTRING( vn, 1, 6 )
           	AND stationno IS NOT NULL
           ORDER BY
-          	stationno ASC limit 4";
+          	stationno ASC limit 5";
 
     $query2 = mysqli_query($objCon,$sql);
  ?>
@@ -36,3 +36,4 @@
   ?>
 
 </table>
+<?php mysqli_close($objCon); ?>

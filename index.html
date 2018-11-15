@@ -1,43 +1,26 @@
-<!--<html>
-<head>
 
-</head>
-
-<body onLoad="window.open('screen.html', '', 'fullscreen=yes, scrollbars=auto'); window.opener=null; window.close(); return false;">
-
-</body>
-
-</html>-->
 <html>
 <head>
   <meta charset="utf-8" />
-<title>Fullscreen browser window with jQuery</title>
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
+<title></title>
+
 </head>
 <body>
-<a href="#" class="fullscreen">เปิดใช้งาน</a>
-<a href="#" class="fullscreenExit">ปิดใช้งาน</a>
-<script>
-    $("a.fullscreen").on('click', function() {
-      var docElement, request;
+  <div style="margin: 50px">
+<a href="waitscreen" >หน้าจอคิวรอซักประวัติ</a><br />
+<a href="waitdoctor" >หน้าจอรอเรียกพบแพทย์</a><br />
+<a href="waitdrug" >หน้าจอคิวรอเรียกห้องยา</a><br />
+<a href="waitlab" >หน้าจอคิวรอเรียกห้องแล็ป</a><br />
+<a href="#" >หน้าจอคิวรอเรียกห้องฉุกเฉิน</a><br />
+<a href="#" >หน้าจอคิวรอเรียกห้องทำฟัน</a><br />
+<a href="#" >หน้าจอคิวรอเรียกคลินิคพิเศษ</a>
 
-      docElement = document.documentElement;
-      request = docElement.requestFullScreen || docElement.webkitRequestFullScreen || docElement.mozRequestFullScreen || docElement.msRequestFullScreen;
-
-      if(typeof request!="undefined" && request){
-          request.call(docElement);
-      }
-    });
-    $("a.fullscreenExit").on('click', function() {
-        var docElement, request;
-
-        docElement = document;
-        request = docElement.cancelFullScreen|| docElement.webkitCancelFullScreen || docElement.mozCancelFullScreen || docElement.msCancelFullScreen || docElement.exitFullscreen;
-        if(typeof request!="undefined" && request){
-            request.call(docElement);
-        }
-    });
-</script>
+ </div>
+<hr />
+<div style="margin: 50px">
+    <p><a href="check_in\drug_checkin.php">1-DRUG Checkin</a></p>
+    <p><a href="check_in\cash_checkin.php">2-CASH Checkin</a></p>
+    <p><a href="check_in\lab_checkin.php">3-LAB Checkin</a></p>
+</div>
 </body>
 </html>

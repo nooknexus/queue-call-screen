@@ -12,7 +12,14 @@
   <link rel="stylesheet" href="..\dist\bootstrap.min.css">
   <!-- Optional theme -->
   <link href="..\dist\style.css" rel="stylesheet">
-
+  <style>
+    body {
+      margin-left: 33px;
+      margin-right: 25px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+  </style>
 
 </head>
 
@@ -21,8 +28,10 @@
 
 
   <div class="row">
-    <div class="col-md-7" id="wait-list">
-
+    <div class="col-md-7">
+        <div class="row" id="wait-list"></div>
+        <div class="row" id="totalwaitlabxray" style="text-align:center;background-color:yellow;color:black; font-size: 30px;"></div>
+        <div class="row" id="totalqueue" style="text-align:center;background-color:#800000;color:white;font-size: 30px;"></div>
     </div>
 
     <div class="col-md-5" id="wait-called">
@@ -37,7 +46,7 @@
   <footer class="footer">
 
     <div class="fixed-bottom" style="background-color:black; vertical-align: bottom;width:100%;">
-      <marquee><h1 style="color:yellow;">หากคิวของท่านถูกเรียกไปแล้วให้ติดต่อเจ้าหน้าที่จุดซักประวัติได้ทันที &#9786;&#9786;&#9786;</h1>
+      <marquee><h1 style="color:yellow;">หากคิวของท่านถูกเรียกไปแล้วให้ติดต่อเจ้าหน้าที่หน้าห้องตรวจได้ทันที &#9786;&#9786;&#9786;</h1>
       </marquee>
     </div>
 
@@ -50,10 +59,18 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="..\dist\bootstrap.min.js"></script>
   <script>
-    var timerloadwaitlist, timerloadwaitcalled;
+    var timerloadwaitlist, timerloadwaitcalled,loadWaitListTotalXray,loadWaitListTotal;
 
     function loadWaitList() {
       $('#wait-list').load('waitdoctor_waitlist.php');
+    } //จบฟังก์ชั่น
+
+    function loadWaitListTotalXray() {
+      $('#totalwaitlabxray').load('totalwaitlabxray.php');
+    } //จบฟังก์ชั่น
+
+    function loadWaitListTotal() {
+      $('#totalqueue').load('totalqueue.php');
     } //จบฟังก์ชั่น
 
     function loadWaitCalled() {
@@ -62,11 +79,18 @@
       $('#wait-called').load('waitdoctor_called.php');
     } //จบฟังก์ชั่น
 
+
     $(document).ready(function() {
       loadWaitList();
+      loadWaitListTotalXray();
+      loadWaitListTotal();
       loadWaitCalled();
+
       timerloadwaitlist = setInterval(loadWaitList, 10 * 1000);
+      timerloadWaitListTotalXray = setInterval(loadWaitListTotalXray, 10 * 1000);
+      timerloadWaitListTotal = setInterval(loadWaitListTotal, 10 * 1000);
       timerloadwaitcalled = setInterval(loadWaitCalled, 5 * 1000);
+
     });
 
     $(window).on('unload',function() {

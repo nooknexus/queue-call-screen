@@ -31,7 +31,7 @@ while ($result2=mysqli_fetch_array($query2, MYSQLI_ASSOC)) {
       <tr>
           <td style="text-align: justify;color:yellow;"><b><?=$result2["depq"]; ?></b></td>
           <td><?=$result2["fullname"]; ?></td>
-          <td style="font-size: 25px;"><?=$result2["status"]=='1'?'รอจัดยา':''; ?></td>
+          <td style="font-size: 25px;"><?=$result2["status"]=='1'?'กำลังจัดยา':''; ?></td>
 
       </tr>
       <?php

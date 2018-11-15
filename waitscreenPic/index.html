@@ -6,23 +6,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>หน้าจอรับยา</title>
+  <title>หน้าจอจุดซักประวัติ</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="..\dist\bootstrap.min.css">
+  <link rel="stylesheet" href="../dist/bootstrap.min.css">
   <!-- Optional theme -->
-  <link href="..\dist\style.css" rel="stylesheet">
+  <link href="../dist/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet">
 
 
 </head>
 
-<body>
+<body style="padding-top: 1px;
+padding-left: 1px;
+padding-right: 1px;
+padding-bottom: 100px;
+font-family: 'Niramit', sans-serif;
+">
 
 
 
   <div class="row">
-    <div class="col-md-7" id="wait-list">
-
+    <div class="col-md-7">
+        <div class="row" id="wait-list"></div>
+        <div class="row" id="wait-total" style="text-align:center;background-color:#800000;color:white;font-size: 30px;"></div>
     </div>
 
     <div class="col-md-5" id="wait-called">
@@ -49,17 +56,24 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <!-- Latest compiled and minified JavaScript -->
   <script src="..\dist\bootstrap.min.js"></script>
+  <script src="..\dist\socket.io.js"></script>
   <script>
     var timerloadwaitlist, timerloadwaitcalled;
 
     function loadWaitList() {
       //$('#wait-list').html('Loafing.....');
-      /*$.get('waitscreen_waitlist.php', function(data) {
+      $.get('waitscreen_waitlist.php', function(data) {
         $('#wait-list').html(data);
         console.log("loadWaitList");
-      });*/
-      $('#wait-list').load('waitdrug_wait.php');
+      });
     } //จบฟังก์ชั่น
+
+    function loadTotal(){
+      $.get('total.php', function(data) {
+          $('#wait-total').html(data);
+          console.log("loadTotal");
+      });
+    }
 
     function loadWaitCalled() {
       //$('#wait-list').html('Loafing.....');
@@ -67,20 +81,32 @@
         $('#wait-called').html(data);
         console.log("loadWaitCalled");
       });*/
-        $('#wait-called').load('waitdrug_called.php');
-
+        $('#wait-called').load('waitscreen_called.php');
+        console.log("loadWaitCalled");
     } //จบฟังก์ชั่น
 
+
+
     $(document).ready(function() {
+      /*var socket = io("http://61.19.22.99:3000");
+      socket.on("notify-wait-screen",function(data){
+        loadWaitList();
+        loadWaitCalled();
+        console.log("socketupdate");
+      });*/
       loadWaitList();
+      loadTotal();
       loadWaitCalled();
       timerloadwaitlist = setInterval(loadWaitList, 10 * 1000);
+      timerloadtotal = setInterval(loadTotal, 10 * 1000);
       timerloadwaitcalled = setInterval(loadWaitCalled, 5 * 1000);
+
     });
 
     $(window).on('unload',function() {
       clearInterval(timerloadwaitlist, timerloadwaitcalled);
     });
+
 
   </script>
 </body>

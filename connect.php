@@ -3,11 +3,11 @@
     /*"host"=>"192.168.191.2",  // กำหนด host
     "user"=>"bk11252", // กำหนดชื่อ user
     "pass"=>"bk11252",   // กำหนดรหัสผ่าน
-    "dbname"=>"hosxp",  // กำหนดชื่อฐานข้อมูล*/
-		"host"=>"localhost",  // กำหนด host
-    "user"=>"root", // กำหนดชื่อ user
-    "pass"=>"",   // กำหนดรหัสผ่าน
-    "dbname"=>"test",  // กำหนดชื่อฐานข้อมูล
+    "dbname"=>"hosxp",*/  // กำหนดชื่อฐานข้อมูล
+		"host"=>"192.168.199.80",  // กำหนด host
+    "user"=>"sa", // กำหนดชื่อ user
+    "pass"=>"sa",   // กำหนดรหัสผ่าน
+    "dbname"=>"najan",  // กำหนดชื่อฐานข้อมูล
     "charset"=>"utf8"  // กำหนด charset
 );
 $objCon = @new mysqli($db_config["host"], $db_config["user"], $db_config["pass"], $db_config["dbname"]);

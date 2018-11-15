@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+  <div>
+
+  </div>
+  <script src="..\dist\jquery.min.js"></script>
+  <script src="..\dist\socket.io.js"></script>
+  <script>
+    $(function () {
+      var socket = io("http://61.19.22.99:3000");
+      socket.on("notify-wait-screen",function(data){
+        $("div").html(data);
+      });
+
+    });
+  </script>
+</body>
+</html>
