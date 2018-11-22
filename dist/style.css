@@ -6,7 +6,7 @@ html {
 body {
   background-color: skyblue;
   color: white;
-  margin: 0px;
+  margin-left: 15px;
   margin-right: 15px;
   padding-top: 0px;
   
@@ -15,9 +15,11 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
+  margin-left: -15px;
+  margin-bottom:24px;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 10px;
 }
 
 /*blink*/
